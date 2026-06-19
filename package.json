@@ -1,0 +1,83 @@
+{
+  "name": "compiler-infrastructure",
+  "version": "2.0.0",
+  "description": "Production-ready compiler infrastructure: Binary lexer, compression, language handlers, and compiler architecture",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./lexer": {
+      "import": "./dist/lexer.js",
+      "types": "./dist/lexer.d.ts"
+    },
+    "./compression": {
+      "import": "./dist/compression.js",
+      "types": "./dist/compression.d.ts"
+    },
+    "./handlers": {
+      "import": "./dist/handlers.js",
+      "types": "./dist/handlers.d.ts"
+    },
+    "./compiler": {
+      "import": "./dist/compiler.js",
+      "types": "./dist/compiler.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "*.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node dist/integration-tests-and-examples.js",
+    "benchmark": "node scripts/benchmark.js",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "prepublishOnly": "npm run build && npm run test",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "compiler",
+    "lexer",
+    "parser",
+    "compression",
+    "language",
+    "transpiler",
+    "dsl",
+    "ast",
+    "tokenizer",
+    "code-generation",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/compiler-infrastructure.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/compiler-infrastructure/issues"
+  },
+  "homepage": "https://github.com/yourusername/compiler-infrastructure#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "prettier": "^3.0.0"
+  },
+  "optionalDependencies": {
+    "source-map-support": "^0.5.21"
+  }
+}

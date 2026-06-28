@@ -125,7 +125,7 @@ export abstract class EngineBase {
 // STRING HANDLERS
 // ============================================================================
 
-export class DoubleQuoteStringHandler extends EngineBase {
+class DoubleQuoteStringHandler extends EngineBase {
   push(source: string, cursor: number): number {
     let pos = cursor + 1;
     let result = '';
@@ -160,7 +160,7 @@ export class DoubleQuoteStringHandler extends EngineBase {
   }
 }
 
-export class SingleQuoteStringHandler extends EngineBase {
+class SingleQuoteStringHandler extends EngineBase {
   push(source: string, cursor: number): number {
     let pos = cursor + 1;
     
@@ -182,7 +182,7 @@ export class SingleQuoteStringHandler extends EngineBase {
   }
 }
 
-export class TemplateLiteralHandler extends EngineBase {
+class TemplateLiteralHandler extends EngineBase {
   push(source: string, cursor: number): number {
     let pos = cursor + 1;
     
@@ -214,7 +214,7 @@ export class TemplateLiteralHandler extends EngineBase {
 // COMMENT HANDLERS
 // ============================================================================
 
-export class LineCommentHandler extends EngineBase {
+class LineCommentHandler extends EngineBase {
   push(source: string, cursor: number): number {
     if (source.charCodeAt(cursor + 1) !== CHAR.SLASH) {
       return cursor + 1;
@@ -229,7 +229,7 @@ export class LineCommentHandler extends EngineBase {
   }
 }
 
-export class BlockCommentHandler extends EngineBase {
+class BlockCommentHandler extends EngineBase {
   push(source: string, cursor: number): number {
     if (source.charCodeAt(cursor + 1) !== CHAR.ASTERISK) {
       return cursor + 1;
@@ -264,7 +264,7 @@ export class BlockCommentHandler extends EngineBase {
 // MORE HANDLERS (HTML, XML, JSON, etc)
 // ============================================================================
 
-export class HtmlTagHandler extends EngineBase {
+class HtmlTagHandler extends EngineBase {
   push(source: string, cursor: number): number {
     if (source.charCodeAt(cursor) !== CHAR.BRACE_OPEN) {
       return cursor + 1;
@@ -290,7 +290,7 @@ export class HtmlTagHandler extends EngineBase {
   }
 }
 
-export class JsonStringHandler extends EngineBase {
+class JsonStringHandler extends EngineBase {
   push(source: string, cursor: number): number {
     if (source.charCodeAt(cursor) !== CHAR.QUOTE_DOUBLE) {
       return cursor + 1;
@@ -314,7 +314,7 @@ export class JsonStringHandler extends EngineBase {
   }
 }
 
-export class YamlStringHandler extends EngineBase {
+class YamlStringHandler extends EngineBase {
   push(source: string, cursor: number): number {
     const quote = source.charCodeAt(cursor);
     if (quote !== CHAR.QUOTE_DOUBLE && quote !== CHAR.QUOTE_SINGLE) {
@@ -337,7 +337,7 @@ export class YamlStringHandler extends EngineBase {
   }
 }
 
-export class RegexLiteralHandler extends EngineBase {
+class RegexLiteralHandler extends EngineBase {
   push(source: string, cursor: number): number {
     let pos = cursor + 1;
     let inCharClass = false;
@@ -376,7 +376,7 @@ export class RegexLiteralHandler extends EngineBase {
   }
 }
 
-export class XmlCdataHandler extends EngineBase {
+class XmlCdataHandler extends EngineBase {
   push(source: string, cursor: number): number {
     const start = '![CDATA[';
     if (!source.startsWith(start, cursor)) {
